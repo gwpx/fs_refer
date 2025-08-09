@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Person } from "@/lib/types";
 
 function normalizePerson(row: Record<string, string>): Person | null {
-  const name = row["Name"] || row["Full Name"] || row["First Name"] && row["Last Name"] ? `${row["First Name"] ?? ""} ${row["Last Name"] ?? ""}`.trim() : "";
+  const name = row["Name"] || row["Full Name"] || (row["First Name"] && row["Last Name"]) ? `${row["First Name"] ?? ""} ${row["Last Name"] ?? ""}`.trim() : "";
   if (!name) return null;
   const title = row["Title"] || row["Position"] || row["Job Title"] || "";
   const company = row["Company"] || row["Company Name"] || row["Organization"] || "";
@@ -64,13 +64,13 @@ export default function CsvUploader({ onLoaded }: { onLoaded?: (people: Person[]
             const f = e.target.files?.[0];
             if (f) handleFile(f);
           }}
-          className="mt-2 block w-full text-sm file:mr-3 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-black/90 file:text-white hover:file:bg-black"
+          className="mt-2 block w-full text-sm file:mr-3 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-gradient-to-r file:from-[#6ee7f8] file:to-[#a78bfa] file:text-black hover:opacity-90"
         />
       </label>
       {count !== null && (
-        <p className="text-sm text-emerald-700 dark:text-emerald-400">Loaded {count} contacts.</p>
+        <p className="text-sm text-emerald-400">Loaded {count} contacts.</p>
       )}
-      {error && <p className="text-sm text-red-600">{error}</p>}
+      {error && <p className="text-sm text-red-400">{error}</p>}
     </div>
   );
 }

@@ -14,10 +14,10 @@ export default function SortPage() {
     return (
       <div className="space-y-4">
         <h1 className="text-2xl font-semibold">Sign in</h1>
-        <p className="text-sm text-black/70 dark:text-white/70">Sign in with LinkedIn to start sorting your connections.</p>
+        <p className="text-sm text-white/70">Sign in with LinkedIn to start sorting your connections.</p>
         <button
           onClick={() => signIn("linkedin")}
-          className="inline-flex items-center gap-2 rounded-md bg-[#0a66c2] text-white px-4 py-2 hover:opacity-90"
+          className="button-primary"
         >
           Continue with LinkedIn
         </button>
@@ -28,8 +28,8 @@ export default function SortPage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <div className="text-sm">Signed in as {session.user?.name ?? session.user?.email}</div>
-        <button onClick={() => signOut()} className="text-sm underline">Sign out</button>
+        <div className="text-sm text-white/80">Signed in as {session.user?.name ?? session.user?.email}</div>
+        <button onClick={() => signOut()} className="button-secondary">Sign out</button>
       </div>
       <Sorter />
     </div>

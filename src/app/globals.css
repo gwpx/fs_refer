@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0b0b12;
+  --foreground: #e7e7ee;
+  --accent: #6ee7f8; /* cyan */
+  --accent-2: #a78bfa; /* violet */
 }
 
 @theme inline {
@@ -12,15 +14,26 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
+  background: radial-gradient(1200px 800px at 10% 10%, rgba(167, 139, 250, 0.12), transparent),
+    radial-gradient(1200px 800px at 90% 20%, rgba(110, 231, 248, 0.12), transparent),
+    linear-gradient(180deg, #0b0b12 0%, #0f0f19 100%);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: var(--foreground);
+}
+
+.button-primary {
+  @apply inline-flex items-center gap-2 rounded-md px-4 py-2 bg-gradient-to-r from-[#6ee7f8] to-[#a78bfa] text-black font-medium hover:opacity-90;
+}
+
+.button-secondary {
+  @apply inline-flex items-center gap-2 rounded-md px-4 py-2 border border-white/15 text-white hover:bg-white/5;
+}
+
+.card {
+  @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-xl shadow-sm;
 }

@@ -59,7 +59,7 @@ export default function Sorter() {
     return (
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">No contacts loaded</h2>
-        <p className="text-sm text-black/70 dark:text-white/70">Go back and upload a CSV of your connections.</p>
+        <p className="text-sm text-white/70">Go back and upload a CSV of your connections.</p>
       </div>
     );
   }
@@ -68,10 +68,10 @@ export default function Sorter() {
     return (
       <div className="space-y-6">
         <h2 className="text-2xl font-semibold">Done</h2>
-        <p className="text-sm">You marked {yesList.length} as exceptional out of {contacts.length}.</p>
+        <p className="text-sm text-white/80">You marked {yesList.length} as exceptional out of {contacts.length}.</p>
         <button
           onClick={() => exportPeopleToExcel(yesList)}
-          className="inline-flex items-center gap-2 rounded-md bg-emerald-600 text-white px-4 py-2 hover:bg-emerald-700"
+          className="button-primary"
         >
           <Download size={18} /> Download Excel
         </button>
@@ -85,17 +85,17 @@ export default function Sorter() {
         <h1 className="text-2xl font-semibold">Is this person exceptional?</h1>
       </div>
 
-      <div className="mx-auto max-w-xl w-full p-6 rounded-xl border border-black/10 dark:border-white/15 shadow-sm bg-white dark:bg-black">
+      <div className="mx-auto max-w-xl w-full p-6 card">
         <div className="space-y-2">
           <div className="text-lg font-semibold">{current.name}</div>
           {current.title || current.company ? (
-            <div className="text-sm text-black/70 dark:text-white/70">{[current.title, current.company].filter(Boolean).join(" • ")}</div>
+            <div className="text-sm text-white/70">{[current.title, current.company].filter(Boolean).join(" • ")}</div>
           ) : null}
           {current.headline ? (
-            <div className="text-sm text-black/70 dark:text-white/70">{current.headline}</div>
+            <div className="text-sm text-white/70">{current.headline}</div>
           ) : null}
           {current.url ? (
-            <a className="text-sm text-blue-600 hover:underline" href={current.url} target="_blank" rel="noreferrer">View profile</a>
+            <a className="text-sm text-white/80 underline decoration-white/30 hover:decoration-white" href={current.url} target="_blank" rel="noreferrer">View profile</a>
           ) : null}
         </div>
       </div>
@@ -103,21 +103,21 @@ export default function Sorter() {
       <div className="flex items-center justify-center gap-4">
         <button
           onClick={chooseNo}
-          className="inline-flex items-center gap-2 rounded-md border px-4 py-2 hover:bg-black/5"
+          className="button-secondary"
         >
           <ArrowLeft size={18} /> No
         </button>
         <button
           onClick={chooseYes}
-          className="inline-flex items-center gap-2 rounded-md bg-black text-white px-4 py-2 hover:bg-black/80"
+          className="button-primary"
         >
           Yes <ArrowRight size={18} />
         </button>
       </div>
 
-      <div className="text-center text-xs text-black/60 dark:text-white/60">Use Left/Right arrow keys</div>
+      <div className="text-center text-xs text-white/60">Use Left/Right arrow keys</div>
 
-      <div className="text-center text-xs text-black/60 dark:text-white/60">{index + 1} / {contacts.length}</div>
+      <div className="text-center text-xs text-white/60">{index + 1} / {contacts.length}</div>
     </div>
   );
 }
