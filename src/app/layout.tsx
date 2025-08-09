@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Providers from "./providers";
 import Link from "next/link";
 
 const geistSans = Geist({
@@ -16,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "FS Refer",
-  description: "Sort your LinkedIn contacts for referrals",
+  description: "Sort your contacts for referrals",
 };
 
 export default function RootLayout({
@@ -27,7 +26,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Providers>
           <div className="min-h-screen flex flex-col">
             <header className="sticky top-0 z-10 backdrop-blur supports-[backdrop-filter]:bg-black/30 bg-black/40 border-b border-white/10">
               <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
@@ -46,7 +44,6 @@ export default function RootLayout({
               <div className="max-w-4xl mx-auto px-4">© {new Date().getFullYear()} FS Refer</div>
             </footer>
           </div>
-        </Providers>
       </body>
     </html>
   );
